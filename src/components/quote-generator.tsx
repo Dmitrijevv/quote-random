@@ -11,13 +11,12 @@ interface QuoteData {
   author: string
   category?: string
 }
+const NEXT_PUBLIC_API_KEY = process.env.NEXT_PUBLIC_API_KEY
 
-const key = process.env.API_KEY
 export default function QuoteGenerator() {
   const [quote, setQuote] = useState<QuoteData | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
-
 
   const fetchRandomQuote = async () => {
     setLoading(true)
@@ -26,7 +25,7 @@ export default function QuoteGenerator() {
     try {
       const response = await fetch("https://api.api-ninjas.com/v1/quotes", {
         headers: {
-          "X-Api-Key": `${key}`,
+          "X-Api-Key": `${NEXT_PUBLIC_API_KEY}`,
         },
       })
 
@@ -58,7 +57,7 @@ export default function QuoteGenerator() {
   useEffect(() => {
     fetchRandomQuote()
   }, [])
-
+  if(NEXT_PUBLIC_API_KEY === undefined) return <div>Loading...</div>
   return (
     <Card className="w-full max-w-md shadow-lg transition-all duration-300 hover:shadow-xl">
       <CardHeader className="flex flex-row items-center justify-between pb-2">
