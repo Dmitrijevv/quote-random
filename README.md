@@ -36,10 +36,10 @@ This is a simple Quote Generator built using the Shadcn UI library and the API p
 
  4. **Run the project**:
     
-  ``bash
-   npm run dev``
-
-5. **Run the project**:
+  ```bash
+  npm run dev
+```
+5. **Open your browser and navigate to http://localhost:3000 to see the Quote Generator in action.**:
 
 ## How It Works
 
